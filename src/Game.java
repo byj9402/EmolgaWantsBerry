@@ -8,6 +8,8 @@ public class Game extends Thread {
     private int count;
     private int score;
 
+    // 에몽가 이미지
+    // left, right에 따라 변경하기
     private Image player = new ImageIcon("src/image/Emolga.png").getImage();
     private int playerX, playerY;
     private int playerWidth = player.getWidth(null);
@@ -21,6 +23,11 @@ public class Game extends Thread {
     private ArrayList<Leppa> leppaList=new ArrayList<Leppa>();
     private ArrayList<Wiki> wikiList=new ArrayList<Wiki>();
 
+    // Leppa, Oran 열매
+    // AppearProcess & MoveProcess 추가
+    // Oran : 기본 점수 ++
+    // Leppa : 점수, 남은 시간 ++
+
     private Oran oran;
     private Leppa leppa;
 
@@ -30,10 +37,12 @@ public class Game extends Thread {
         restart();
         while (true) {
             while(!isOver) {
+                // time 감소 시키기
                 time = System.currentTimeMillis();
                 if (System.currentTimeMillis() - time < delay) {
                     try {
                         Thread.sleep(delay - System.currentTimeMillis() + time);
+                        // Leppa, Oran 열매 추가
                         wikiAppearProcess();
                         wikiMoveProcess();
                         KeyProcess();
@@ -62,7 +71,6 @@ public class Game extends Thread {
         for (int i = 0; i < wikiList.size(); i++) {
             wiki = wikiList.get(i);
             wiki.move();
-
             if (wiki.x + 15 < playerX + playerWidth && wiki.x + wiki.width > playerX + 15
                     // 에몽가가 위키열매에 맞을 때
                     && wiki.y < playerY + playerHeight - 40 && wiki.y + wiki.height > playerY)
@@ -73,7 +81,7 @@ public class Game extends Thread {
         }
     }
 
-            public void restart() {	//다시하기
+    public void restart() {	//다시하기
         isOver = false;
         count = 0;
         score = 0;
@@ -97,6 +105,7 @@ public class Game extends Thread {
     }
 
     public void BerryDraw(Graphics g) {
+        // Leppa, Oran 열매 추가
         for(int i=0;i<wikiList.size();i++) {
             wiki = wikiList.get(i);
             g.drawImage(wiki.image, wiki.x, wiki.y, null);
@@ -104,6 +113,7 @@ public class Game extends Thread {
     }
 
     public void infoDraw(Graphics g) {
+        // info GUI 변경
         g.setColor(Color.RED);
         g.setFont(new Font("Arial",Font.BOLD,20));
         g.drawString("SCORE : "+score,250,60);
