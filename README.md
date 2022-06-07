@@ -17,7 +17,7 @@ esc를 누르면 게임을 일시정지 할 수 있습니다.
 
 ### 주인공
 ![Emolga](https://www.nicepng.com/png/detail/414-4148651_587emolga-bw-anime-pokemon-emolga.png)<br/>
-야생의 에몽가입니다. 일대에서는 나무열매를 호시탐탐 노리는 장난꾸러기로 유명합니다. 이 깜찍한 날다람쥐를 조작해 열매를 먹어봅시다.
+야생의 에몽가입니다. 일대에서는 나무열매를 호시탐탐 노리는 장난꾸러기로 유명합니다. 깜찍한 날다람쥐를 조작해 열매를 먹어봅시다.
 
 ### 나무 열매의 종류
 <img src="https://podicmaster.cdn3.cafe24.com/berries/007.png" width="25px" height="25px" alt="Oran"></img> __오랭열매__(Oran Berry):
