@@ -40,12 +40,17 @@ public class Plane extends JFrame {
             switch(e.getKeyCode()) {
                 case KeyEvent.VK_LEFT:
                     game.setLeft(true);
+                    game.setRightImage(false);
+                    game.setLeftImage(true);
                     break;
                 case KeyEvent.VK_RIGHT:
                     game.setRight(true);
+                    game.setRightImage(true);
+                    game.setLeftImage(false);
                     break;
                 case KeyEvent.VK_ESCAPE:
-                    System.exit(0);
+                    if(game.Stop()) game.setStop(false);
+                    else game.setStop(true);
                     break;
                 case KeyEvent.VK_ENTER:
                     if(game.isOver()) game.restart();

@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0659c582-2a2b-41d7-bcb2-54b7c035da98" name="변경" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/image/bomb.png" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/EmolgaLeft.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/EmolgaRight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/Lepa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/bomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Oran.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Oran.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/Emolga.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

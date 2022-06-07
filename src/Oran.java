@@ -11,6 +11,6 @@ public class Oran extends Berry {
     }
 
     public void move() {
-        this.y += 5;
+        this.y += 7;
     }
 }
