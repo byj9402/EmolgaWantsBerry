@@ -7,6 +7,6 @@ public class Berry {
     }
 
     public void move() {
-        // 열매의 움직임
+        // override 될 열매의 움직임
     }
 }
