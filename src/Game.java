@@ -9,8 +9,6 @@ public class Game extends Thread {
     private int count;
     private int score;
 
-    // 에몽가 이미지
-    // left, right에 따라 변경하기
     private Image player = new ImageIcon("src/image/EmolgaLeft.png").getImage();
     private Image playerRight = new ImageIcon("src/image/EmolgaRight.png").getImage();
     private int playerX, playerY;
