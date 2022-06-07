@@ -1,4 +1,4 @@
-___Emolga Wants Berry___<br/>
+***Emolga Wants Berry***<br/>
 *에몽가는 나무 열매가 먹고 싶어*
 ---
 
