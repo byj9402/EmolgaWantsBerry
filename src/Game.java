@@ -72,7 +72,7 @@ public class Game extends Thread {
             wiki = wikiList.get(i);
             wiki.move();
             if (wiki.x + 15 < playerX + playerWidth && wiki.x + wiki.width > playerX + 15
-                    // 에몽가가 위키열매에 맞을 때
+                    // 에몽가가 위키 열매에 맞을 때
                     && wiki.y < playerY + playerHeight - 40 && wiki.y + wiki.height > playerY)
             {
                 wikiList.remove(wiki); // 위키 열매 삭제
@@ -94,7 +94,7 @@ public class Game extends Thread {
             oran = oranList.get(i);
             oran.move();
             if (oran.x + 15 < playerX + playerWidth && oran.x + oran.width > playerX + 15
-                    // 에몽가가 오랭열매에 맞을 때
+                    // 에몽가가 오랭 열매에 맞을 때
                     && oran.y < playerY + playerHeight - 40 && oran.y + oran.height > playerY)
             {
                 score = score + 10;
@@ -115,9 +115,10 @@ public class Game extends Thread {
             leppa = leppaList.get(i);
             leppa.move();
             if (leppa.x + 15 < playerX + playerWidth && leppa.x + leppa.width > playerX + 15
-                    // 에몽가가 과사열매에 맞을 때
+                    // 에몽가가 과사 열매에 맞을 때
                     && leppa.y < playerY + playerHeight - 40 && leppa.y + leppa.height > playerY)
             {
+                // score가 0이하가 되면 게임 종료
                 if (life>0 && life<3) { life++; }
                 score = score - 100;
                 if (score < 0) { isOver = true; }
@@ -126,7 +127,7 @@ public class Game extends Thread {
         }
     }
 
-    public void restart() {	//다시하기
+    public void restart() {	//다시 하기
         isOver = false;
         leftImage = true;
         count = 0;
