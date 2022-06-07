@@ -1,4 +1,4 @@
-# EmolgaWantsBerry
+# Emolga Wants Berry
 
 2022년도 1학기 자바 프로그래밍의 기말 프로젝트의 주제로 제작되었습니다.
 
