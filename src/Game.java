@@ -147,7 +147,7 @@ public class Game extends Thread {
     }
 
     public void infoDraw(Graphics g) {
-        // info GUI 변경
+        // info GUI 변경 요망
         g.setColor(Color.BLACK);
         g.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         g.drawString("SCORE : " + score, 360, 60);
