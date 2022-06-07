@@ -20,12 +20,12 @@ esc를 누르면 게임을 일시정지 할 수 있습니다.
 ### 나무 열매의 종류
 <img src="https://podicmaster.cdn3.cafe24.com/berries/007.png" width="25px" height="25px" alt="Oran"></img> __오랭열매__(Oran Berry):
 에몽가의 주식입니다.
-새콤한 것을 좋아하는 에몽가는 오랭열매를 좋아합니다. <br/>
-획득 시 점수를 10점 얻습니다.
+새콤한 것을 좋아하는 에몽가는 오랭열매를 좋아합니다.
+획득 시 점수를 10점 얻습니다. <br/>
 <img src="https://podicmaster.cdn3.cafe24.com/berries/012.png" width="25px" height="25px" alt="Wiki"></img> __위키열매__(Wiki Berry):
 에몽가가 싫어하는 열매입니다.
-떫은 것을 싫어하는 에몽가는 위키열매를 싫어합니다. <br/>
-획득시 생명을 1 잃습니다.
+떫은 것을 싫어하는 에몽가는 위키열매를 싫어합니다.
+획득시 생명을 1 잃습니다. <br/>
 <img src="https://podicmaster.cdn3.cafe24.com/berries/006.png" width="25px" height="25px" alt="Leppa"></img> __과사열매__(Leppa Berry):
 에몽가가 제일 좋아하는 열매입니다.
 가끔 먹는 건 괜찮지만, 너무 많이 먹으면 배탈이 나고 맙니다.
