@@ -53,7 +53,8 @@ public class Plane extends JFrame {
                     else game.setStop(true);
                     break;
                 case KeyEvent.VK_ENTER:
-                    if(game.isOver()) game.restart();
+                    if(game.isOver()) {game.restart();}
+                    else if (game.Stop()) {game.setStop(false);}
                     break;
             }
         }

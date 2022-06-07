@@ -5,9 +5,9 @@ import javax.swing.*;
 public class Game extends Thread {
     private int delay = 20;
     private long time;
-    private long playTime;
     private int count;
     private int score;
+    private int life = 3;
 
     private Image player = new ImageIcon("src/image/EmolgaLeft.png").getImage();
     private Image playerRight = new ImageIcon("src/image/EmolgaRight.png").getImage();
@@ -24,10 +24,6 @@ public class Game extends Thread {
     private ArrayList<Oran> oranList = new ArrayList<Oran>();
     private ArrayList<Leppa> leppaList = new ArrayList<Leppa>();
     private ArrayList<Wiki> wikiList = new ArrayList<Wiki>();
-
-    // Leppa 열매
-    // AppearProcess & MoveProcess 추가
-    // Leppa : 점수, 남은 시간 ++
 
     private Oran oran;
     private Leppa leppa;
@@ -47,6 +43,8 @@ public class Game extends Thread {
                         wikiMoveProcess();
                         oranAppearProcess();
                         oranMoveProcess();
+                        leppaAppearProcess();
+                        leppaMoveProcess();
                         KeyProcess();
                         count++;
                     } catch (InterruptedException e) {
@@ -78,7 +76,8 @@ public class Game extends Thread {
                     && wiki.y < playerY + playerHeight - 40 && wiki.y + wiki.height > playerY)
             {
                 wikiList.remove(wiki); // 위키 열매 삭제
-                isOver = true;
+                life--;
+                if (life < 1) { isOver = true; }
             }
         }
     }
@@ -104,12 +103,35 @@ public class Game extends Thread {
         }
     }
 
+    private void leppaAppearProcess() {
+        if(count%100==0) {
+            leppa = new Leppa((int)(Math.random()*480), 0);
+            leppaList.add(leppa);
+        }
+    }
+
+    private void leppaMoveProcess() {
+        for (int i = 0; i < leppaList.size(); i++) {
+            leppa = leppaList.get(i);
+            leppa.move();
+            if (leppa.x + 15 < playerX + playerWidth && leppa.x + leppa.width > playerX + 15
+                    // 에몽가가 과사열매에 맞을 때
+                    && leppa.y < playerY + playerHeight - 40 && leppa.y + leppa.height > playerY)
+            {
+                if (life>0 && life<3) { life++; }
+                score = score - 100;
+                if (score < 0) { isOver = true; }
+                leppaList.remove(leppa); // 과사 열매 삭제
+            }
+        }
+    }
+
     public void restart() {	//다시하기
         isOver = false;
-        Stop = false;
         leftImage = true;
         count = 0;
         score = 0;
+        life = 3;
 
         playerX = (Main.SCREEN_WIDTH - playerWidth) / 2;
         playerY = (Main.SCREEN_HEIGHT - playerHeight) - 15;
@@ -122,6 +144,7 @@ public class Game extends Thread {
     public void gameDraw(Graphics g) {
         playerDraw(g);
         BerryDraw(g);
+        lifeDraw(g);
         infoDraw(g);
     }
 
@@ -132,15 +155,15 @@ public class Game extends Thread {
 
     public void BerryDraw(Graphics g) {
         // Leppa 열매 추가
-        for(int i=0;i<wikiList.size();i++) {
+        for(int i = 0; i < wikiList.size(); i++) {
             wiki = wikiList.get(i);
             g.drawImage(wiki.image, wiki.x, wiki.y, null);
         }
-        for(int i=0;i<oranList.size();i++) {
+        for(int i = 0; i < oranList.size(); i++) {
             oran = oranList.get(i);
             g.drawImage(oran.image, oran.x, oran.y, null);
         }
-        for(int i=0;i<leppaList.size();i++) {
+        for(int i = 0; i < leppaList.size(); i++) {
             leppa = leppaList.get(i);
             g.drawImage(leppa.image, leppa.x, leppa.y, null);
         }
@@ -151,7 +174,6 @@ public class Game extends Thread {
         g.setColor(Color.BLACK);
         g.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         g.drawString("SCORE : " + score, 360, 60);
-        g.drawString("TIME: " + playTime, 250, 60);
         if(isOver) {
             g.setColor(Color.BLACK);
             g.setFont(new Font("맑은 고딕",Font.BOLD,40));
@@ -159,6 +181,22 @@ public class Game extends Thread {
         }
         if(Stop) {
             //ESC 눌렀을 때 멈추고 설명 띄움
+        }
+    }
+
+    public void lifeDraw(Graphics g) {
+        Image leppa = new ImageIcon("src/image/Leppa.png").getImage();
+        if (life == 1) {
+            g.drawImage(leppa, 10, 35, null);
+        }
+        else if (life == 2) {
+            g.drawImage(leppa, 10, 35, null);
+            g.drawImage(leppa, 40, 35, null);
+        }
+        else if (life == 3) {
+            g.drawImage(leppa, 10, 35, null);
+            g.drawImage(leppa, 40, 35, null);
+            g.drawImage(leppa, 70, 35, null);
         }
     }
 
@@ -174,13 +212,8 @@ public class Game extends Thread {
     public void setLeftImage(boolean leftImage) {this.leftImage = leftImage;}
     public void setRightImage(boolean rightImage) {this.rightImage = rightImage;}
 
-    public void setStop(boolean Stop) {this.Stop = Stop;}
+    public void setStop(boolean Stop) { this.Stop = Stop; }
 
-    public boolean isOver() {
-        return isOver;
-    }
-    public boolean Stop() {
-        return Stop;
-    }
-
+    public boolean isOver() { return isOver; }
+    public boolean Stop() { return Stop; }
 }
