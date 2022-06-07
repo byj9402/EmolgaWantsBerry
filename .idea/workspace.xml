@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0659c582-2a2b-41d7-bcb2-54b7c035da98" name="변경" comment="Initial commit">
+    <list default="true" id="0659c582-2a2b-41d7-bcb2-54b7c035da98" name="변경" comment="Add Life">
+      <change afterPath="$PROJECT_DIR$/src/image/pause.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/sadmolga.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Plane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +83,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654531068120</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add Leppa Berry">
+      <created>1654604240147</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654604240147</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add Life">
+      <created>1654604396351</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654604396351</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -99,6 +114,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Add Leppa Berry" />
+    <MESSAGE value="Add Life" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Life" />
   </component>
 </project>

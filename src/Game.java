@@ -11,6 +11,9 @@ public class Game extends Thread {
 
     private Image player = new ImageIcon("src/image/EmolgaLeft.png").getImage();
     private Image playerRight = new ImageIcon("src/image/EmolgaRight.png").getImage();
+    private Image notice = new ImageIcon("src/image/pause.png").getImage();
+    private Image fail = new ImageIcon("src/image/sadmolga.png").getImage();
+
     private int playerX, playerY;
     private int playerWidth = player.getWidth(null);
     private int playerHeight = player.getHeight(null);
@@ -176,12 +179,18 @@ public class Game extends Thread {
         g.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         g.drawString("SCORE : " + score, 360, 60);
         if(isOver) {
-            g.setColor(Color.BLACK);
+            g.setColor(Color.RED);
             g.setFont(new Font("맑은 고딕",Font.BOLD,40));
-            g.drawString("Press Enter to restart",40,200);
+            g.drawString("실패...",100,320);
+            g.drawImage(fail, 30, 280, null);
+            g.setColor(Color.black);
+            g.setFont(new Font("맑은 고딕",Font.BOLD,20));
+            g.drawString("다시 하려면 ENTER",120,350);
+            g.drawString("도움말은 ESC",120,370);
         }
         if(Stop) {
-            //ESC 눌렀을 때 멈추고 설명 띄움
+            //ESC 눌렀을 때 멈추고 설명
+            g.drawImage(notice, 0, 0, null);
         }
     }
 
