@@ -224,16 +224,13 @@ public class Game extends Thread {
     public void lifeDraw(Graphics g) {
         // NullPointerException 오류를 제거하기 위해 Leppa 열매 이미지를 자체적으로 불러옴
         Image leppa = new ImageIcon("src/image/Leppa.png").getImage();
-        if (life == 1) {
+        if (life > 0) {
             g.drawImage(leppa, 10, 35, null);
         }
-        else if (life == 2) {
-            g.drawImage(leppa, 10, 35, null);
+        if (life > 1) {
             g.drawImage(leppa, 40, 35, null);
         }
-        else if (life == 3) {
-            g.drawImage(leppa, 10, 35, null);
-            g.drawImage(leppa, 40, 35, null);
+        if (life > 2) {
             g.drawImage(leppa, 70, 35, null);
         }
     }
