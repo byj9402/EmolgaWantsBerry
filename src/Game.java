@@ -71,7 +71,7 @@ public class Game extends Thread {
 
     private void wikiAppearProcess() {
         if(count%20==0) {
-            wiki = new Wiki((int)(Math.random()*480), 0);
+            wiki = new Wiki((int)(Math.random()*510), 0);
             wikiList.add(wiki);
         }
     }
@@ -111,7 +111,7 @@ public class Game extends Thread {
 
     private void oranAppearProcess() {
         if(count%15==0) {
-            oran = new Oran((int)(Math.random()*480), 0);
+            oran = new Oran((int)(Math.random()*510), 0);
             oranList.add(oran);
         }
     }
@@ -132,7 +132,7 @@ public class Game extends Thread {
 
     private void leppaAppearProcess() {
         if(count%100==0) {
-            leppa = new Leppa((int)(Math.random()*480), 0);
+            leppa = new Leppa((int)(Math.random()*510), 0);
             leppaList.add(leppa);
         }
     }
