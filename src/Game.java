@@ -240,10 +240,12 @@ public class Game extends Thread {
 
     // key가 눌리는 것에 따라 player를 움직임
     private void KeyProcess() {
-        if (left && playerX - playerSpeed > 0)
+        if (left && playerX - playerSpeed > 0) {
             playerX -= playerSpeed;
-        if (right && playerX + playerWidth + playerSpeed < Main.SCREEN_WIDTH)
+        }
+        if (right && playerX + playerWidth + playerSpeed < Main.SCREEN_WIDTH) {
             playerX += playerSpeed;
+        }
     }
 
     public void setLeft(boolean left) {this.left = left;}
