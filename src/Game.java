@@ -3,25 +3,22 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class Game extends Thread {
-    private int delay = 20;
-    private long time;
     private int count;
     private int score;
     private int life = 3;
 
     // player(이하 '에몽가') left 이미지
-    private Image player = new ImageIcon("src/image/EmolgaLeft.png").getImage();
+    private final Image player = new ImageIcon("src/image/EmolgaLeft.png").getImage();
     // 에몽가 right 이미지
-    private Image playerRight = new ImageIcon("src/image/EmolgaRight.png").getImage();
+    private final Image playerRight = new ImageIcon("src/image/EmolgaRight.png").getImage();
     // 멈췄을 때 보여질 게임 rule
-    private Image notice = new ImageIcon("src/image/pause.png").getImage();
+    private final Image notice = new ImageIcon("src/image/pause.png").getImage();
     // gameover일 때 보일 에몽가 이미지
-    private Image fail = new ImageIcon("src/image/sadmolga.png").getImage();
+    private final Image fail = new ImageIcon("src/image/sadmolga.png").getImage();
 
     private int playerX, playerY;
-    private int playerWidth = player.getWidth(null);
-    private int playerHeight = player.getHeight(null);
-    private int playerSpeed = 10;
+    private final int playerWidth = player.getWidth(null);
+    private final int playerHeight = player.getHeight(null);
 
     private boolean left, right;
     private boolean leftImage, rightImage;
@@ -29,42 +26,84 @@ public class Game extends Thread {
     private boolean Stop;
 
     // Berry를 저장할 각자의 ArrayList
-    private ArrayList<Oran> oranList = new ArrayList<Oran>();
-    private ArrayList<Leppa> leppaList = new ArrayList<Leppa>();
-    private ArrayList<Wiki> wikiList = new ArrayList<Wiki>();
+    private final ArrayList<Oran> oranList = new ArrayList<>();
+    private final ArrayList<Leppa> leppaList = new ArrayList<>();
+    private final ArrayList<Wiki> wikiList = new ArrayList<>();
 
     private Oran oran;
     private Leppa leppa;
     private Wiki wiki;
 
+    private int[] temp;
+
+    public Game(){
+        temp = new int[10];
+        for(int start=0;start<temp.length;start++){
+            temp[start]=start;
+        }
+    }
+
+    /* Thread 제작에 참고한 소스 코드
+        public class SingleThreadEx2 implements Runnable{
+
+            private int[] temp;
+
+            public SingleThreadEx2(){
+            temp = new int[10];
+
+            for(int start=0;start<temp.length;start++){
+                temp[start]=start;
+            }
+            }
+
+            @Override
+            public void run() {
+            // TODO Auto-generated method stub
+            for(int start:temp){
+                try {
+                    Thread.sleep(1000);
+
+                } catch (InterruptedException ie) {
+                    ie.printStackTrace();
+                    // TODO: handle exception
+                }
+
+                System.out.println("스레드이름:"+Thread.currentThread().getName());
+                System.out.println("temp value :"+start);
+            }
+            }
+
+            public static void main(String[] args) {
+
+            SingleThreadEx2 ct = new SingleThreadEx2();
+            Thread t = new Thread(ct,"첫번째");
+
+            t.start();
+            }
+        }
+        출처 : https://coding-factory.tistory.com/279
+     */
+
     @Override
     public void run() {
         restart();
-        while (true) {
+        for (int start : temp) {
             while(!isOver&&!Stop) {
-                time = System.currentTimeMillis();
-                if (System.currentTimeMillis() - time < delay) {
-                    try {
-                        Thread.sleep(delay - System.currentTimeMillis() + time);
-                        // Berry들을 나타내고 움직임
-                        wikiAppearProcess();
-                        wikiMoveProcess();
-                        oranAppearProcess();
-                        oranMoveProcess();
-                        leppaAppearProcess();
-                        leppaMoveProcess();
-                        // ~
-                        KeyProcess();
-                        count++;
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                try {
+                    Thread.sleep(30);
+                    // Berry들을 나타내고 움직임
+                    wikiAppearProcess();
+                    wikiMoveProcess();
+                    oranAppearProcess();
+                    oranMoveProcess();
+                    leppaAppearProcess();
+                    leppaMoveProcess();
+                    // ~
+                    KeyProcess();
+                    count++;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-            }
-            try {
-                Thread.sleep(100);
-            }catch(InterruptedException e){
-                e.printStackTrace();
             }
         }
     }
@@ -196,17 +235,16 @@ public class Game extends Thread {
     }
 
     public void BerryDraw(Graphics g) {
-        // Leppa 열매 추가
-        for(int i = 0; i < wikiList.size(); i++) {
-            wiki = wikiList.get(i);
+        for (Wiki value : wikiList) {
+            wiki = value;
             g.drawImage(wiki.image, wiki.x, wiki.y, null);
         }
-        for(int i = 0; i < oranList.size(); i++) {
-            oran = oranList.get(i);
+        for (Oran value : oranList) {
+            oran = value;
             g.drawImage(oran.image, oran.x, oran.y, null);
         }
-        for(int i = 0; i < leppaList.size(); i++) {
-            leppa = leppaList.get(i);
+        for (Leppa value : leppaList) {
+            leppa = value;
             g.drawImage(leppa.image, leppa.x, leppa.y, null);
         }
     }
@@ -249,6 +287,7 @@ public class Game extends Thread {
 
     // key가 눌리는 것에 따라 player를 움직임
     private void KeyProcess() {
+        int playerSpeed = 10;
         if (left && playerX - playerSpeed > 0) {
             playerX -= playerSpeed;
         }

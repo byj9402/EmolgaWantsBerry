@@ -3,10 +3,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Plane extends JFrame {
-    private Image bufferImage;
-    private Graphics screenGraphic;
-    private Image mainScreen = new ImageIcon("src/image/background.png").getImage();
-    private Game game=new Game();
+    private final Image mainScreen = new ImageIcon("src/image/background.png").getImage();
+    private final Game game=new Game();
 
     public Plane() {
         super("나무열매를 먹어요");
@@ -23,8 +21,8 @@ public class Plane extends JFrame {
     }
 
     public void paint(Graphics g) {
-        bufferImage = createImage(Main.SCREEN_WIDTH,Main.SCREEN_HEIGHT);
-        screenGraphic = bufferImage.getGraphics();
+        Image bufferImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+        Graphics screenGraphic = bufferImage.getGraphics();
         screenDraw(screenGraphic);
         g.drawImage(bufferImage,0,0,null);
     }
@@ -61,9 +59,8 @@ public class Plane extends JFrame {
                 case KeyEvent.VK_ESCAPE:
                     // 게임이 멈춰 있는 상태라면
                     // 게임을 시작한다
-                    if(game.Stop()) game.setStop(false);
                     // 그렇지 않다면 게임을 멈춘다
-                    else game.setStop(true);
+                    game.setStop(!game.Stop());
                     break;
                 // Enter 키를 눌렀을 때
                 case KeyEvent.VK_ENTER:
