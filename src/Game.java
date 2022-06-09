@@ -106,6 +106,10 @@ public class Game extends Thread {
                 life--;
                 if (life < 1) { isOver = true; }
             }
+            // 데이터가 쌓여 과부하되는 현상을 막기 위해 화면 밖을 벗어나면 객체를 삭제함
+            if (wiki.y > 820) {
+                wikiList.remove(wiki);
+            }
         }
     }
 
@@ -126,6 +130,10 @@ public class Game extends Thread {
             {
                 score = score + 10;
                 oranList.remove(oran); // 오랭 열매 삭제
+            }
+            // 데이터가 쌓여 과부하되는 현상을 막기 위해 화면 밖을 벗어나면 객체를 삭제함
+            if (oran.y > 820) {
+                oranList.remove(oran);
             }
         }
     }
@@ -151,6 +159,10 @@ public class Game extends Thread {
                 // score가 0이하가 되면 게임 종료
                 if (score < 0) { isOver = true; }
                 leppaList.remove(leppa); // 과사 열매 삭제
+            }
+            // 데이터가 쌓여 과부하되는 현상을 막기 위해 화면 밖을 벗어나면 객체를 삭제함
+            if (leppa.y > 820) {
+                leppaList.remove(leppa);
             }
         }
     }
