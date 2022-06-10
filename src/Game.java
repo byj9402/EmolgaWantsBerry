@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import javax.swing.*;
 
 public class Game extends Thread {
@@ -34,11 +35,9 @@ public class Game extends Thread {
     private Leppa leppa;
     private Wiki wiki;
 
-    private int[] temp;
-
     public Game(){
-        temp = new int[10];
-        for(int start=0;start<temp.length;start++){
+        int[] temp = new int[10];
+        for(int start = 0; start< temp.length; start++){
             temp[start]=start;
         }
     }
@@ -87,23 +86,22 @@ public class Game extends Thread {
     @Override
     public void run() {
         restart();
-        for (int start : temp) {
-            while(!isOver&&!Stop) {
-                try {
-                    Thread.sleep(30);
-                    // Berry들을 나타내고 움직임
-                    wikiAppearProcess();
-                    wikiMoveProcess();
-                    oranAppearProcess();
-                    oranMoveProcess();
-                    leppaAppearProcess();
-                    leppaMoveProcess();
-                    // ~
-                    KeyProcess();
-                    count++;
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        while(!isOver&&!Stop) {
+            try {
+                Thread.sleep(30);
+                // Berry들을 나타내고 움직임
+                wikiAppearProcess();
+                wikiMoveProcess();
+                oranAppearProcess();
+                oranMoveProcess();
+                leppaAppearProcess();
+                leppaMoveProcess();
+                // ~
+                KeyProcess();
+            } catch (InterruptedException|ConcurrentModificationException|NullPointerException e) {
+                e.printStackTrace();
+            } finally {
+                count++;
             }
         }
     }

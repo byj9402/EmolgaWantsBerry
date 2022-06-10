@@ -6,5 +6,7 @@ public class Main {
     public static int SCREEN_HEIGHT= 780;
 
     // Plane 실행
-    public static void main(String[] args) { new Plane(); }
+    public static void main(String[] args) {
+        new Plane();
+    }
 }
