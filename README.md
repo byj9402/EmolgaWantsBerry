@@ -33,5 +33,5 @@ esc를 누르면 게임을 일시정지 할 수 있습니다.
 
 - - - 
 __오류 및 수정사항__<br/>
-[] MoveProcess & AppearProcess 수정<br/>
-[] NullPointerException, ConcurrentModificationException 오류
+[ ] MoveProcess & AppearProcess 수정<br/>
+[ ] NullPointerException, ConcurrentModificationException 오류
